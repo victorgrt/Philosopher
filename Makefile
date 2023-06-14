@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/14 14:52:54 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/14 16:38:34 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ CC      =	gcc
 ################################################################################
 # * SRC * #
 
-SRC = 
+SRC = ./src/main.c \
+	./src/utils.c \
+	./src/error.c \
+	./src/parsing.c \
 
 
 OBJ = ${SRC:.c=.o}
@@ -47,6 +50,7 @@ all: ${NAME}
 
 ${NAME} : ${OBJ}
 	@echo ${BOLD} ${BLUE} "\033[1m○	Compiling files..." ${NONE}
+	@${CC} ${OBJ} -o ${NAME}
 	@echo ${BOLD} ${GREEN} "○	Compiled !" ${NONE}
 	@echo ${BOLD} ${GRAY} "‣	Usage : ./philo <number_of_philosopher> <time_to_die> <time_to_eat> <time_to_sleep> [number_of_times_each_philosopher_must_eat]"
 

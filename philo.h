@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:09:23 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/14 16:21:56 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/14 16:32:48 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,17 @@ typedef	struct s_philo
 	int				rfork;
 	t_data			*data;
 }	t_philo;
+
+
+/* */
+
+/* PARSING */
+int		ft_is_num(char *str);
+
+/* UTILS */
+long	ft_atol(char *str);
+
+/* ERROR MANAGEMENT */
+void	ft_error(char *str);
 
 #endif
