@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/14 16:38:34 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/14 17:07:05 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ clean:
 
 fclean: clean	
 	@echo ${RED} ${BOLD} "‣	Deleting..." ${NONE}
+	@${foreach value, ${NAME}, echo ${value};}
 	@rm -f ${PROG}
 	@rm -f ${OBJ}
 	@${foreach value, $(OBJ), echo ${value};}
