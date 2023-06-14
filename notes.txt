@@ -1,0 +1,19 @@
+    Les philosophes et les fourchettes :
+        Modélisez les philosophes comme des processus concurrents qui doivent prendre des décisions.
+        Utilisez des threads ou des processus pour représenter les philosophes.
+        Les philosophes partagent des ressources, représentées par les fourchettes.
+
+    Le problème de la synchronisation :
+        Les philosophes doivent suivre un protocole pour éviter les conflits lorsqu'ils prennent des fourchettes.
+        Utilisez des mécanismes de synchronisation tels que les sémaphores ou les mutex pour gérer l'accès aux fourchettes.
+        Par exemple, vous pouvez utiliser des mutex pour verrouiller les fourchettes lorsqu'un philosophe veut les utiliser.
+
+    La gestion des ressources partagées :
+        Les philosophes partagent les fourchettes et doivent les utiliser de manière exclusive.
+        Assurez-vous qu'un philosophe ne peut prendre qu'une seule fourchette à la fois.
+        Utilisez des mécanismes de contrôle d'accès pour éviter les conditions de concurrence.
+
+    La gestion du temps et des cycles :
+        Les philosophes doivent alterner entre la pensée et le repas pour éviter les impasses.
+        Utilisez des mécanismes de synchronisation pour contrôler les cycles de repas et de pensée.
+        Par exemple, vous pouvez utiliser des compteurs ou des chronomètres pour gérer le temps passé à manger et à penser.
