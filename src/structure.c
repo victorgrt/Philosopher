@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:59:59 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 16:36:06 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/15 17:40:25 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,56 @@ fois, la simulation prend fin. Si cet argument n’est pas spécifié, alors la 
 lation prend fin à la mort d’un philosophe.
 */
 
+void    init_philo(t_env *s, int i, int j)
+{
+    s->philos[i].pos = i + 1;
+    s->philos[i].nb_meals = 0;
+    s->philos[i].lfork = i;
+    s->philos[i].rfork = j; 
+}
+
+void    create_philos(t_env *s)
+{
+    int i;
+    int j;
+
+    s->philos = malloc(sizeof(t_philo) * (s->philo_nb + 1));
+    if (!s->philos)
+    {
+        printf("Error Malloc s->philos");
+        return ;
+    }
+    i = 0;
+    j = 1;
+    while (j < s->philo_nb)
+    {
+        init_philo(s, i, j);
+        i++;
+        j++;
+    }
+    j = 0;
+    init_philo(s, i, j);
+}
+
 void    printer_structure(t_env *s)
 {
-    printf("Structure Values :\n \
+    printf("Env Values :\n \
     nb_philo : %d\n \
     time_die : %d\n \
     time_eat : %d\n \
     time_slp : %d\n \
     must_eat : %d\n", s->philo_nb, s->time_die, s->time_eat, s->time_slp, s->must_eat);
+
+    int i = 0;
+    while (i < s->philo_nb)
+    {
+        printf("Philo [%d] :\n \
+        position : %d\n \
+        nb_meals : %d\n \
+        left fork : %d\n \
+        right fork : %d\n", i, s->philos[i].pos, s->philos[i].nb_meals, s->philos[i].lfork, s->philos[i].rfork);
+        i++;
+    }
 }
 
 void    init_struc(int ac, char **av, t_env *s)
@@ -48,6 +90,7 @@ void    init_struc(int ac, char **av, t_env *s)
         s->must_eat = ft_atol(av[5]);
     else  
 		s->must_eat = 0;
+    create_philos(s);
     printer_structure(s);
 }
 

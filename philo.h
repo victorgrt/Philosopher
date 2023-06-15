@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:09:23 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 16:40:20 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/15 17:32:40 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef	struct s_philo
 {
-	int				nb_meal;
+	int				nb_meals;
 	int				pos;
 	unsigned long	last_meal;
 	int				meals_counter;
