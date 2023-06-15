@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:35 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 15:22:13 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/15 16:27:09 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,17 @@ int	ft_is_num(char *str)
 	return (1);
 }
 
-int ft_check_args(int ac, char **av)
+void	ft_check_args(int ac, char **av)
 {
-	
-	if (ac != 5)
+	if (ac < 5 || ac > 6)
 		ft_error("Error : Please Check Arguments (4 needed)");
 	while (ac-- > 1)
 	{
 		if (ft_is_num(av[ac]) == 1)
 			ft_error("Error : Invalid Character");
 		if (ft_atol(av[ac]) > 2147483647 || ft_atol(av[ac]) < 0)
-			ft_error("Error : Argument out of range");
+			ft_error("Error : Argument %d out of range, av[ac]");
 	}
-	return (0);
 }
 
 // int	main(int ac, char **av)

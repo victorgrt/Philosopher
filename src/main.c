@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:20:54 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 15:58:43 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/15 16:08:45 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,27 @@ void*	routine()
 	return (NULL);
 }
 
-int main(int ac, char **av)
-{
-    (void) ac;
-    (void) av;
+// int main(int ac, char **av)
+// {
+//     (void) ac;
+//     (void) av;
 
-    pthread_t t1, t2;
-	pthread_mutex_t mutex;
+//     pthread_t t1, t2;
+// 	pthread_mutex_t mutex;
 
-	pthread_mutex_init(&mutex, NULL);
+// 	pthread_mutex_init(&mutex, NULL);
 
-    if (pthread_create(&t1, NULL, &routine, NULL) != 0) //initialisation
-		return (1); //there was an error
-	if (pthread_create(&t2, NULL, &routine, NULL) != 0)
-		return (2);
-    if (pthread_join(t1, NULL) != 0) //wait until it's finished askip
-		return (3);
-	if (pthread_join(t2, NULL) != 0)
-		return (4);
+//     if (pthread_create(&t1, NULL, &routine, NULL) != 0) //initialisation
+// 		return (1); //there was an error
+// 	if (pthread_create(&t2, NULL, &routine, NULL) != 0)
+// 		return (2);
+//     if (pthread_join(t1, NULL) != 0) //wait until it's finished askip
+// 		return (3);
+// 	if (pthread_join(t2, NULL) != 0)
+// 		return (4);
 
-	pthread_mutex_destroy(&mutex);
+// 	pthread_mutex_destroy(&mutex);
 
-	printf("Number of mails : %d\n", mails);
-    return (0);
-}
+// 	printf("Number of mails : %d\n", mails);
+//     return (0);
+// }

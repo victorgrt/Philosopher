@@ -6,7 +6,7 @@
 #    By: victor <victor@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/15 15:23:54 by victor           ###   ########.fr        #
+#    Updated: 2023/06/15 16:12:58 by victor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = ./src/main.c \
 	./src/utils.c \
 	./src/error.c \
 	./src/parsing.c \
+	./src/structure.c \
 
 
 OBJ = ${SRC:.c=.o}
