@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
+#    By: victor <victor@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/14 17:07:05 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/15 15:23:54 by victor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ! ARGUMENTS ! #
 
 NAME    =	philosopher
-CCFLAGS =	-Wall -Werror -Wextra
+CCFLAGS =	-g -pthread -Wall -Werror -Wextra
 CC      =	gcc
 
 ################################################################################

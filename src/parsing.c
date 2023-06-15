@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
+/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:35 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/14 16:41:14 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/15 15:22:13 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int ft_check_args(int ac, char **av)
 	return (0);
 }
 
-int	main(int ac, char **av)
-{
-	printf("%d\n", ft_check_args(ac, av));
-	return (0);
-}
+// int	main(int ac, char **av)
+// {
+// 	printf("%d\n", ft_check_args(ac, av));
+// 	return (0);
+// }
