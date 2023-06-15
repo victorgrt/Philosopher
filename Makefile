@@ -6,7 +6,7 @@
 #    By: victor <victor@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/15 18:16:52 by victor           ###   ########.fr        #
+#    Updated: 2023/06/15 18:34:18 by victor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,17 +43,21 @@ BLUE='\033[0;34m'
 
 title :
 	@echo ${GRAY}"\n██████╗ ██╗  ██╗██╗██╗      ██████╗ ███████╗ ██████╗ ██████╗ ██╗  ██╗███████╗██████╗\n██╔══██╗██║  ██║██║██║     ██╔═══██╗██╔════╝██╔═══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗\n██████╔╝███████║██║██║     ██║   ██║███████╗██║   ██║██████╔╝███████║█████╗  ██████╔╝\n██╔═══╝ ██╔══██║██║██║     ██║   ██║╚════██║██║   ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗\n██║     ██║  ██║██║███████╗╚██████╔╝███████║╚██████╔╝██║     ██║  ██║███████╗██║  ██║\n╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n"${NONE}
-	@echo ${BLUE}${CURSIVE}""${NONE}
-	@echo ${YELLOW}${BOLD}"○ By vgoret"${NONE}
+	@echo ${BLUE}${CURSIVE}"○  https://github.com/victorgrt/Philosopher\n"${NONE}
+	@echo ${YELLOW}${BOLD}"○  By vgoret\n"${NONE}
 	@$(MAKE) all --no-print-directory
 
 all: ${NAME} 
 
 ${NAME} : ${OBJ}
 	@echo ${BOLD} ${BLUE} "\033[1m○	Compiling files..." ${NONE}
-	@${CC} ${OBJ} -o ${NAME}
+	${CC} ${CCFLAGS} ${OBJ} -o ${NAME}
+	@echo "\n"
+	@sleep 0.5
 	@echo ${BOLD} ${GREEN} "○	Compiled !" ${NONE}
-	@echo ${BOLD} ${GRAY} "‣	Usage : ./philo <number_of_philosopher> <time_to_die> <time_to_eat> <time_to_sleep> [number_of_times_each_philosopher_must_eat]"
+	@echo "./${NAME} \n"
+	@sleep 0.5
+	@echo ${BOLD} ${GRAY} "‣	Usage : ./philo <number_of_philosopher> <time_to_die> <time_to_eat> <time_to_sleep> [number_of_times_each_philosopher_must_eat]\n"
 
 %.o: %.c
 	@$(CC) ${CCFLAGS} -c $< -o $@
