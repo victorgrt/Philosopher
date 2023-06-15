@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:59:59 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 17:40:25 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/15 17:51:17 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,76 +28,99 @@ fois, la simulation prend fin. Si cet argument n’est pas spécifié, alors la 
 lation prend fin à la mort d’un philosophe.
 */
 
+int	create_forks(t_env *s)
+{
+	int		i;
+
+	s->forks = malloc(sizeof(pthread_mutex_t) * s->philo_nb + 1);
+	if (!(s->forks))
+	{
+		printf("Error malloc FORKS");
+		return (FALSE);
+	}
+	i = 0;
+	while (i < s->philo_nb)
+	{
+		// INITIALISER LES THREADS
+		// if (pthread_mutex_init(&s->forks[i], NULL) != 0)
+		// 	return (FALSE);
+		// i++;
+	}
+	return (TRUE);
+}
+
 void    init_philo(t_env *s, int i, int j)
 {
-    s->philos[i].pos = i + 1;
-    s->philos[i].nb_meals = 0;
-    s->philos[i].lfork = i;
-    s->philos[i].rfork = j; 
+	s->philos[i].pos = i + 1;
+	s->philos[i].nb_meals = 0;
+	s->philos[i].lfork = i;
+	s->philos[i].rfork = j;
+	s->philos[i].time_to_die = 0;
 }
 
 void    create_philos(t_env *s)
 {
-    int i;
-    int j;
+	int i;
+	int j;
 
-    s->philos = malloc(sizeof(t_philo) * (s->philo_nb + 1));
-    if (!s->philos)
-    {
-        printf("Error Malloc s->philos");
-        return ;
-    }
-    i = 0;
-    j = 1;
-    while (j < s->philo_nb)
-    {
-        init_philo(s, i, j);
-        i++;
-        j++;
-    }
-    j = 0;
-    init_philo(s, i, j);
+	s->philos = malloc(sizeof(t_philo) * (s->philo_nb + 1));
+	if (!s->philos)
+	{
+		printf("Error Malloc s->philos");
+		return ;
+	}
+	i = 0;
+	j = 1;
+	while (j < s->philo_nb)
+	{
+		init_philo(s, i, j);
+		i++;
+		j++;
+	}
+	j = 0;
+	init_philo(s, i, j);
 }
 
 void    printer_structure(t_env *s)
 {
-    printf("Env Values :\n \
-    nb_philo : %d\n \
-    time_die : %d\n \
-    time_eat : %d\n \
-    time_slp : %d\n \
-    must_eat : %d\n", s->philo_nb, s->time_die, s->time_eat, s->time_slp, s->must_eat);
+	printf("Env Values :\n \
+	nb_philo : %d\n \
+	time_die : %d\n \
+	time_eat : %d\n \
+	time_slp : %d\n \
+	must_eat : %d\n", s->philo_nb, s->time_die, s->time_eat, s->time_slp, s->must_eat);
 
-    int i = 0;
-    while (i < s->philo_nb)
-    {
-        printf("Philo [%d] :\n \
-        position : %d\n \
-        nb_meals : %d\n \
-        left fork : %d\n \
-        right fork : %d\n", i, s->philos[i].pos, s->philos[i].nb_meals, s->philos[i].lfork, s->philos[i].rfork);
-        i++;
-    }
+	int i = 0;
+	while (i < s->philo_nb)
+	{
+		printf("Philo [%d] :\n \
+		position : %d\n \
+		time_to_die : %d\n \
+		nb_meals : %d\n \
+		left fork : %d\n \
+		right fork : %d\n", i, s->philos[i].pos, s->philos[i].time_to_die, s->philos[i].nb_meals, s->philos[i].lfork, s->philos[i].rfork);
+		i++;
+	}
 }
 
 void    init_struc(int ac, char **av, t_env *s)
 {
-    s->philo_nb = ft_atol(av[1]);
-    s->time_die = ft_atol(av[2]);
-    s->time_eat = ft_atol(av[3]);
-    s->time_slp = ft_atol(av[4]);
-    if (ac == 6)
-        s->must_eat = ft_atol(av[5]);
-    else  
+	s->philo_nb = ft_atol(av[1]);
+	s->time_die = ft_atol(av[2]);
+	s->time_eat = ft_atol(av[3]);
+	s->time_slp = ft_atol(av[4]);
+	if (ac == 6)
+		s->must_eat = ft_atol(av[5]);
+	else  
 		s->must_eat = 0;
-    create_philos(s);
-    printer_structure(s);
+	create_philos(s);
+	printer_structure(s);
 }
 
 int main(int ac, char **av)
 {
-    t_env  s;
-    ft_check_args(ac, av);
-    init_struc(ac, av, &s);
-    return (0);
+	t_env  s;
+	ft_check_args(ac, av);
+	init_struc(ac, av, &s);
+	return (0);
 }

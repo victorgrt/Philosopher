@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:09:23 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 17:32:40 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/15 17:50:25 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+# define TRUE 1
+# define FALSE 0
+
 typedef	struct s_philo
 {
 	int				nb_meals;
+	int				time_to_die;
 	int				pos;
 	unsigned long	last_meal;
 	int				meals_counter;
@@ -49,7 +53,12 @@ typedef struct s_env
 }	t_env;
 
 
-/* */
+/* STRUCTURE */
+void	init_struc(int ac, char **av, t_env *s);
+void	create_philos(t_env *s);
+
+/* FORKS */
+
 
 /* PARSING */
 int		ft_is_num(char *str);
@@ -60,5 +69,8 @@ long	ft_atol(char *str);
 
 /* ERROR MANAGEMENT */
 void	ft_error(char *str);
+
+/* PRINTER */
+void	printer_structure(t_env *s);
 
 #endif
