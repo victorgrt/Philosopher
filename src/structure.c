@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:59:59 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 17:51:17 by victor           ###   ########.fr       */
+/*   Updated: 2023/06/20 12:06:51 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,28 +81,6 @@ void    create_philos(t_env *s)
 	init_philo(s, i, j);
 }
 
-void    printer_structure(t_env *s)
-{
-	printf("Env Values :\n \
-	nb_philo : %d\n \
-	time_die : %d\n \
-	time_eat : %d\n \
-	time_slp : %d\n \
-	must_eat : %d\n", s->philo_nb, s->time_die, s->time_eat, s->time_slp, s->must_eat);
-
-	int i = 0;
-	while (i < s->philo_nb)
-	{
-		printf("Philo [%d] :\n \
-		position : %d\n \
-		time_to_die : %d\n \
-		nb_meals : %d\n \
-		left fork : %d\n \
-		right fork : %d\n", i, s->philos[i].pos, s->philos[i].time_to_die, s->philos[i].nb_meals, s->philos[i].lfork, s->philos[i].rfork);
-		i++;
-	}
-}
-
 void    init_struc(int ac, char **av, t_env *s)
 {
 	s->philo_nb = ft_atol(av[1]);
@@ -122,5 +100,6 @@ int main(int ac, char **av)
 	t_env  s;
 	ft_check_args(ac, av);
 	init_struc(ac, av, &s);
+	free
 	return (0);
 }
