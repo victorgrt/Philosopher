@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/21 14:26:49 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/21 16:35:20 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,14 +46,13 @@ BLUE='\033[0;34m'
 
 title :
 	@echo ${GRAY}"\n██████╗ ██╗  ██╗██╗██╗      ██████╗ ███████╗ ██████╗ ██████╗ ██╗  ██╗███████╗██████╗\n██╔══██╗██║  ██║██║██║     ██╔═══██╗██╔════╝██╔═══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗\n██████╔╝███████║██║██║     ██║   ██║███████╗██║   ██║██████╔╝███████║█████╗  ██████╔╝\n██╔═══╝ ██╔══██║██║██║     ██║   ██║╚════██║██║   ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗\n██║     ██║  ██║██║███████╗╚██████╔╝███████║╚██████╔╝██║     ██║  ██║███████╗██║  ██║\n╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n"${NONE}
-	@echo ${BLUE}${CURSIVE}"○  https://github.com/victorgrt/Philosopher\n"${NONE}
-	@echo ${YELLOW}${BOLD}"○  By vgoret\n"${NONE}
+	@echo ${BLUE} ${BOLD} "○  https://github.com/victorgrt/Philosopher 	by vgoret 🏄‍♂️\n\n"${NONE}
 	@$(MAKE) all --no-print-directory
 
 all: ${NAME} 
 
 ${NAME} : ${OBJ}
-	@echo ${BOLD} ${BLUE} "\033[1m○	Compiling files..." ${NONE}
+	@echo ${BOLD} ${YELLOW} "○	Compiling files..." ${NONE}
 	${CC} ${CCFLAGS} ${OBJ} -o ${NAME}
 	@echo "\n"
 	@sleep 0.5
@@ -69,14 +68,13 @@ clean:
 	@rm -f ${OBJ}
 
 fclean: clean	
-	@echo ${RED} ${BOLD} "‣	Deleting..." ${NONE}
+	@echo ${RED} ${BOLD} "\n‣ Deleting... 🚮\n" ${NONE}
 	@${foreach value, ${NAME}, echo ${value};}
-	@rm -f ${PROG}
-	@rm -f ${OBJ}
-	@${foreach value, $(OBJ), echo ${value};}
 	@rm -f ${NAME}
+	@${foreach value, $(OBJ), echo ${value};}
+	@rm -f ${OBJ}
 	@rm -f ./a.out
-	@echo ${RED} ${BOLD} "\n‣ Folder Cleaned Sucessfully" ${NONE}
+	@echo ${RED} ${BOLD} "\n‣ Folder Cleaned Sucessfully ✅\n" ${NONE}
 
 re : fclean all
 
