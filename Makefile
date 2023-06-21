@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victor <victor@student.42.fr>              +#+  +:+       +#+         #
+#    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/15 18:34:18 by victor           ###   ########.fr        #
+#    Updated: 2023/06/21 14:26:49 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ SRC = ./src/main.c \
 	./src/error.c \
 	./src/parsing.c \
 	./src/structure.c \
+	./src/printer.c \
+	./src/free.c \
+	./src/threads.c \
 
 
 OBJ = ${SRC:.c=.o}

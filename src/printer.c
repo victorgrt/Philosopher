@@ -6,11 +6,13 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:05:42 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/20 12:14:36 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/21 16:01:27 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+// void	print_action()
 
 void    printer_structure(t_env *s)
 {
@@ -21,15 +23,15 @@ void    printer_structure(t_env *s)
 	time_slp : %d\n \
 	must_eat : %d\n", s->philo_nb, s->time_die, s->time_eat, s->time_slp, s->must_eat);
 
-	int i = 0;
-	while (i < s->philo_nb)
-	{
+	// int i 0 0;
+	// while (i < s->philo_nb)
+	// {
 		printf("Philo [%d] :\n \
 		position : %d\n \
 		time_to_die : %d\n \
 		nb_meals : %d\n \
 		left fork : %d\n \
-		right fork : %d\n", i, s->philos[i].pos, s->philos[i].time_to_die, s->philos[i].nb_meals, s->philos[i].lfork, s->philos[i].rfork);
-		i++;
-	}
+		right fork : %d\n", 0, s->philos[0].pos, s->philos[0].time_to_die, s->philos[0].nb_meals, s->philos[0].lfork, s->philos[0].rfork);
+		// i++;
+	// }
 }

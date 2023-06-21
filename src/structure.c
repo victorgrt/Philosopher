@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:59:59 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/20 12:06:51 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/21 14:49:13 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,25 @@ int	create_forks(t_env *s)
 	return (TRUE);
 }
 
+void	create_threads(t_env *s)
+{
+	int	i;
+
+	i = 0;
+	while (i < s->philo_nb)
+	{
+		// s->philos->thread[i] = malloc(sizeof(pthread_t));
+		pthread_create(&s->philos->thread[i], NULL, (void *)&printer_structure, &s); //pas finito
+		i++;
+	}
+	i = 0;
+	while (i < s->philo_nb)
+	{
+		pthread_join(s->philos->thread[i], NULL);
+		i++;
+	}
+}
+
 void    init_philo(t_env *s, int i, int j)
 {
 	s->philos[i].pos = i + 1;
@@ -56,6 +75,10 @@ void    init_philo(t_env *s, int i, int j)
 	s->philos[i].lfork = i;
 	s->philos[i].rfork = j;
 	s->philos[i].time_to_die = 0;
+	s->philos[i].env = s;
+	s->philos[i].thread = malloc(sizeof(pthread_t));
+	if (!s->philos[i].thread)
+		ft_error("Malloc echoue pour s->philos.threads");
 }
 
 void    create_philos(t_env *s)
@@ -92,7 +115,7 @@ void    init_struc(int ac, char **av, t_env *s)
 	else  
 		s->must_eat = 0;
 	create_philos(s);
-	printer_structure(s);
+	// printer_structure(s);
 }
 
 int main(int ac, char **av)
@@ -100,6 +123,8 @@ int main(int ac, char **av)
 	t_env  s;
 	ft_check_args(ac, av);
 	init_struc(ac, av, &s);
-	free
+	printer_structure(&s);
+	printf("\n Bordel : \n");
+	create_threads(&s);
 	return (0);
 }
