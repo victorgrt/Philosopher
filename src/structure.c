@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:59:59 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/21 14:49:13 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/22 13:07:55 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void    init_philo(t_env *s, int i, int j)
 	s->philos[i].thread = malloc(sizeof(pthread_t));
 	if (!s->philos[i].thread)
 		ft_error("Malloc echoue pour s->philos.threads");
+	pthread_mutex_init(&s->philos[i].printer, NULL);
 }
 
 void    create_philos(t_env *s)

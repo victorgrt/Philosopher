@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:09:23 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/21 14:33:20 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/22 13:05:22 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef	struct s_philo
 	int				rfork;
 	struct s_env	*env;
 	pthread_t		*thread;
+	pthread_mutex_t	printer;
 }	t_philo;
 
 typedef struct s_env
