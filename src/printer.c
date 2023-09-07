@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:05:42 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/22 13:13:24 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/09/05 18:44:05 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ void    printer_structure(t_env *s)
 {
 	int	i;
 
-	i = 0;
-
-	while (i < s->philo_nb)
+	// pthread_mutex_lock(&s->philos[s->i_mutex].printer);	
+	i = 1;
+	while (i <= s->philo_nb)
 	{
-		pthread_mutex_lock(&s->philos[i].printer);
-		if (i == 0)
+		if (i == 1)
 		printf("Env Values :\n \
 			nb_philo : %d\n \
 			time_die : %d\n \
@@ -37,8 +36,7 @@ void    printer_structure(t_env *s)
 			left fork : %d\n \
 			right fork : %d\n", i, s->philos[i].pos, s->philos[i].time_to_die, s->philos[i].nb_meals, s->philos[i].lfork, s->philos[i].rfork);
 		i++;
-		pthread_mutex_unlock(&s->philos[i].printer);
 	}
-
-	pthread_mutex_destroy(&s->philos[i].printer);
+	// pthread_mutex_unlock(&s->philos[s->i_mutex].printer);
+	// pthread_mutex_destroy(&s->philos[s->i_mutex].printer);
 }

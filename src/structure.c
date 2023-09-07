@@ -6,11 +6,13 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:59:59 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/22 13:07:55 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/09/07 17:17:18 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+#include <unistd.h>
+
 
 /*Initialiser mes structures
 Parametres :
@@ -28,12 +30,19 @@ fois, la simulation prend fin. Si cet argument n’est pas spécifié, alors la 
 lation prend fin à la mort d’un philosophe.
 */
 
+void	*routine(void *args)
+{
+	(void)args;
+	printf("Help\n");
+	return NULL;
+}
+
 int	create_forks(t_env *s)
 {
 	int		i;
 
-	s->forks = malloc(sizeof(pthread_mutex_t) * s->philo_nb + 1);
-	if (!(s->forks))
+	// s->forks = malloc(sizeof(pthread_mutex_t) * s->philo_nb + 1);
+	// if (!(s->forks))
 	{
 		printf("Error malloc FORKS");
 		return (FALSE);
@@ -53,79 +62,61 @@ void	create_threads(t_env *s)
 {
 	int	i;
 
-	i = 0;
-	while (i < s->philo_nb)
+	i = 1;
+	while (i <= s->philo_nb)
 	{
 		// s->philos->thread[i] = malloc(sizeof(pthread_t));
-		pthread_create(&s->philos->thread[i], NULL, (void *)&printer_structure, &s); //pas finito
+		s->i_mutex = i;
+		printf("i_mutex : %d\n", s->i_mutex);
+		// pthread_create(&s->threads[i], NULL, (void *)&routine, &s); //pas finito
 		i++;
 	}
-	i = 0;
-	while (i < s->philo_nb)
+	i = 1;
+	while (i <= s->philo_nb)
 	{
-		pthread_join(s->philos->thread[i], NULL);
+		// pthread_join(s->threads[i], NULL);
 		i++;
 	}
-}
-
-void    init_philo(t_env *s, int i, int j)
-{
-	s->philos[i].pos = i + 1;
-	s->philos[i].nb_meals = 0;
-	s->philos[i].lfork = i;
-	s->philos[i].rfork = j;
-	s->philos[i].time_to_die = 0;
-	s->philos[i].env = s;
-	s->philos[i].thread = malloc(sizeof(pthread_t));
-	if (!s->philos[i].thread)
-		ft_error("Malloc echoue pour s->philos.threads");
-	pthread_mutex_init(&s->philos[i].printer, NULL);
 }
 
 void    create_philos(t_env *s)
 {
 	int i;
-	int j;
 
 	s->philos = malloc(sizeof(t_philo) * (s->philo_nb + 1));
+	// s->philos->thread = malloc(sizeof(pthread_t) * s->philo_nb);
+	// if (s->philos->thread == NULL)
+	// {
+	// 	printf("Malloc failed for threads tab !\n");
+	// 	return ;
+	// }
 	if (!s->philos)
 	{
-		printf("Error Malloc s->philos");
+		printf("Error Malloc s->philos\n");
 		return ;
 	}
-	i = 0;
-	j = 1;
-	while (j < s->philo_nb)
+	i = 1;
+	while (i <= s->philo_nb)
 	{
-		init_philo(s, i, j);
+		// init_philo(s, i, i+1);
 		i++;
-		j++;
 	}
-	j = 0;
-	init_philo(s, i, j);
 }
 
-void    init_struc(int ac, char **av, t_env *s)
-{
-	s->philo_nb = ft_atol(av[1]);
-	s->time_die = ft_atol(av[2]);
-	s->time_eat = ft_atol(av[3]);
-	s->time_slp = ft_atol(av[4]);
-	if (ac == 6)
-		s->must_eat = ft_atol(av[5]);
-	else  
-		s->must_eat = 0;
-	create_philos(s);
-	// printer_structure(s);
-}
+
 
 int main(int ac, char **av)
 {
 	t_env  s;
+	
 	ft_check_args(ac, av);
-	init_struc(ac, av, &s);
-	printer_structure(&s);
-	printf("\n Bordel : \n");
-	create_threads(&s);
+	if (maxi_init(ac, av, &s) == 0)
+		return (0);
+	if (init_mutex(&s) == 0)
+		return (0);
+	init_philosophers(&s);
+	printer_philos(s.philos);
+	if (init_thread(&s) == 0)
+		return (0);
 	return (0);
 }

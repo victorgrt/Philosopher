@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:09:23 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/22 13:05:22 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/09/07 17:13:17 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <pthread.h>
 
 # define TRUE 1
@@ -22,16 +23,23 @@
 
 typedef	struct s_philo
 {
-	int				nb_meals;
-	int				time_to_die;
-	int				pos;
+	int				philo_nb;
+	int				rang_philo;
+	int				meals_nb;
+	int				die_time;
+	int				eat_time;
+	int				sleep_time;
+	int				max_meal;
 	unsigned long	last_meal;
-	int				meals_counter;
 	int				lfork;
 	int				rfork;
+
+	long long		start_time;
+	
 	struct s_env	*env;
-	pthread_t		*thread;
-	pthread_mutex_t	printer;
+	pthread_mutex_t	*lf;
+	pthread_mutex_t *rf;
+	pthread_t		thread;
 }	t_philo;
 
 typedef struct s_env
@@ -41,18 +49,34 @@ typedef struct s_env
 	int	time_eat;
 	int	time_slp;
 	int	time_think;
+	int	max_meal;
 	int	must_eat;
 
 	unsigned long	start_time;
+	long			current_time;
 	int		stop_condition;
 	int		max_ate;
 
 	t_philo	*philos;
-	pthread_mutex_t	*forks;
+	
+	pthread_mutex_t dead;
 	pthread_mutex_t	meal;
-	pthread_mutex_t	writing;
+	pthread_mutex_t	print;
+	pthread_mutex_t *mutex;
+	int	i_mutex;
+
 }	t_env;
 
+
+/* INIT */
+int		init_mutex(t_env *s);
+void	init_philosophers(t_env *s);
+int		init_mutex(t_env *s);
+void	ft_link_mutex_philo(t_env *s);
+int		maxi_init(int ac, char **av, t_env *env);
+
+/* ThREADS */
+void	create_threads(t_env *s);
 
 /* STRUCTURE */
 void	init_struc(int ac, char **av, t_env *s);
@@ -66,6 +90,7 @@ int		ft_is_num(char *str);
 void 	ft_check_args(int ac, char **av);
 
 /* UTILS */
+
 long	ft_atol(char *str);
 
 /* ERROR MANAGEMENT */
@@ -73,5 +98,6 @@ void	ft_error(char *str);
 
 /* PRINTER */
 void	printer_structure(t_env *s);
+void	printer_philos(t_philo *p);
 
 #endif

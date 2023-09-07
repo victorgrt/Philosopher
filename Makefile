@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 14:10:40 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/22 12:41:22 by vgoret           ###   ########.fr        #
+#    Updated: 2023/09/07 16:39:44 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = ./src/main.c \
 	./src/printer.c \
 	./src/free.c \
 	./src/threads.c \
+	./src/init.c \
 
 
 OBJ = ${SRC:.c=.o}

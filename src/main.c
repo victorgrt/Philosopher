@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:20:54 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/15 16:08:45 by victor           ###   ########.fr       */
+/*   Updated: 2023/09/07 16:45:16 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ Only needed if multiple threads would execute the same part of a code
 that could mess things up.
 */
 
-int mails = 0;
-pthread_mutex_t mutex;
+// int mails = 0;
+// pthread_mutex_t mutex;
 
-void*	routine()
-{
-	for (int i = 0; i < 100000; i++)
-	{
-		pthread_mutex_lock(&mutex);
-		mails++;
-		pthread_mutex_unlock(&mutex);
+// void*	routine()
+// {
+// 	for (int i = 0; i < 100000; i++)
+// 	{
+// 		pthread_mutex_lock(&mutex);
+// 		mails++;
+// 		pthread_mutex_unlock(&mutex);
 
-	}
-	return (NULL);
-}
+// 	}
+// 	return (NULL);
+// }
 
 // int main(int ac, char **av)
 // {
