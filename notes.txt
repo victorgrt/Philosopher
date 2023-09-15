@@ -17,3 +17,7 @@
         Les philosophes doivent alterner entre la pensée et le repas pour éviter les impasses.
         Utilisez des mécanismes de synchronisation pour contrôler les cycles de repas et de pensée.
         Par exemple, vous pouvez utiliser des compteurs ou des chronomètres pour gérer le temps passé à manger et à penser.
+
+
+Zoldxx :
+

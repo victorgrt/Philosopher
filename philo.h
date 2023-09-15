@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:09:23 by vgoret            #+#    #+#             */
-/*   Updated: 2023/09/07 17:13:17 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/09/07 17:20:32 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_env
 
 
 /* INIT */
+int		init_thread(t_env *s);
 int		init_mutex(t_env *s);
 void	init_philosophers(t_env *s);
 int		init_mutex(t_env *s);
